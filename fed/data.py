@@ -9,12 +9,6 @@ def load_data(data_path: str) -> pd.DataFrame:
         print(f"Error loading data: {e}")
         return None
 
-data_path = r"C:\Users\yings\Onedrive\桌面\D100\gdp_data.xlsx"
-gdp_data = load_data(data_path)
-
-print(gdp_data.head())
-
-
 #clean the data
 import pandas as pd
 
@@ -34,9 +28,4 @@ def clean_gdp_data(df: pd.DataFrame) -> pd.DataFrame:
     except Exception as e:
         print(f"Error cleaning data: {e}")
         return None
-
-# Assuming your loaded data is called `gdp_data`
-cleaned_gdp_data = clean_gdp_data(gdp_data)
-
-# Display the first few rows of the cleaned data
-print(cleaned_gdp_data.head())
+load_data("D:\24fall\D100\ps1\GDP_analysis\data\gdp_data.xlsx")
