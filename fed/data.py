@@ -1,7 +1,9 @@
-# load the data
+# Load the data
 import pandas as pd
 
-def load_data(data_path: str) -> pd.DataFrame:   
+
+def load_data(data_path: str) -> pd.DataFrame:
+    """Load GDP data from an Excel file."""
     try:
         df = pd.read_excel(data_path)
         return df
@@ -9,31 +11,35 @@ def load_data(data_path: str) -> pd.DataFrame:
         print(f"Error loading data: {e}")
         return None
 
-data_path = r"C:\Users\yings\Onedrive\桌面\D100\gdp_data.xlsx"
+
+data_path = (
+    r"C:\Users\yings\Onedrive\桌面\D100"
+    r"\gdp_data.xlsx"
+    )
 gdp_data = load_data(data_path)
 
 print(gdp_data.head())
 
 
-#clean the data
-import pandas as pd
-
+# Clean the data
 def clean_gdp_data(df: pd.DataFrame) -> pd.DataFrame:
-  
+    """Clean and transform the GDP data."""
     try:
         # Melt the data from wide to long format
-        df_melted = df.melt(id_vars=["Country Name"], var_name="Year", value_name="GDP")
-        
+        df_melted = df.melt(
+            id_vars=["Country Name"], var_name="Year", value_name="GDP"
+        )
         # Convert the 'Year' column to integer
         df_melted["Year"] = df_melted["Year"].astype(int)
-        
+
         # Check for and handle missing values (if any)
         df_clean = df_melted.dropna()
-        
+
         return df_clean
     except Exception as e:
         print(f"Error cleaning data: {e}")
         return None
+
 
 # Assuming your loaded data is called `gdp_data`
 cleaned_gdp_data = clean_gdp_data(gdp_data)

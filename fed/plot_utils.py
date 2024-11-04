@@ -1,20 +1,12 @@
 import matplotlib.pyplot as plt
-import pandas as pd 
+import pandas as pd
 
-def plot_gdp(df: pd.DataFrame, country: str):
-    """
-    Plots the GDP data for a specific country.
-    
-    Args:
-    df (pd.DataFrame): The cleaned GDP data.
-    country (str): The name of the country to plot.
-    
-    Returns:
-    None
-    """
+
+def plot_gdp(df: pd.DataFrame, country: str) -> None:
+    """Plot GDP data for a specified country."""
     # Filter the data for the specified country
     df_country = df[df['Country Name'] == country]
-    
+
     # Plot GDP over time
     plt.figure(figsize=(10, 6))
     plt.plot(df_country['Year'], df_country['GDP'], marker='o')
